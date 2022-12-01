@@ -1,19 +1,16 @@
-# Snake-Game
+# Guess That Word
 
-This hungry serpent is looking for some food to eat, and the more it eats the more it grows!
-We must help this gluttonous snake eat more, so it can grow and become the longest serpent this world has ever seen!
+How good are your vocabulary and spelling capabilities? Well find out with this fun, brain busting game.
 
 # MVP
--Render a start screen with game-play instructions a start button, and a box indicating how many points(how much food) it has eaten
--Display the container with a small box for food and a small snake
--Create the snake and be able to move it around using WASD keys
--Have the snake grow each time he eats the food
--populate more food after the snake eats it
--create a Game Over! text to populate over the screen once the snake bites the end of its tail
--
+Render a start screen with gameplay instructions and a start button.
+create a wordlist
+make sure to add a hint to each word that you come up with
+create a limited amount of chances for the player, that will determine whether the player wins or loses
+create a message indicating whether player has used a word that was incorrect
+create a message to display indicating if the player Wins! or Lost!
 
 # STRETCH GOALS
--create different levels of intensity by increasing the speed of the snake
--have more than 1 snake
--have blocks (or some kind of obstacle) that doesn't allow the snake to pass thru making it more difficlut for the player
--create poisonous food that would kill the snake
+create different levels of difficulty
+use a more interesting background to makethe game really pop-out
+make it to where the game is able to accept both lowercase and uppercase letters
