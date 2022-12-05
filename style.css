@@ -1,4 +1,25 @@
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: magenta;
+}
+.wrapper {
+    width: 430px;
+    background: white;
+}
+.wrapper h1{
+    font-size: 25px;
+    font-weight: 500;
+    padding: 20px 25px;
+    border: 1px solid rgb(198, 195, 195);
+}
 
 
 
