@@ -2,30 +2,36 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 body{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: purple;
+    background-image: url("https://wallpapercave.com/dwp2x/wp2333242.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .wrapper {
     width: 430px;
     background: white;
 }
-.wrapper h1{
-    font-size: 25px;
-    font-weight: 500;
+.wrapper h1{ /*Guess the Word*/
+    font-size: 40px;
+    color: rgb(66, 62, 62);
     padding: 20px 25px;
-    border: 1px solid rgb(198, 195, 195);
+    border: 3px solid rgb(129, 125, 125);
 }
 .wrapper .content {
     margin: 25px 25px 35px;
 }
 .content .typing-input{
     z-index: -999;
+    font-size: large;
     position: initial;
+    width: 7em;
+    height: 2em;
     padding: 10px;
     margin: 10px;
 }
@@ -58,6 +64,7 @@ body{
     padding: 15px;
     color: white;
     background: black;
+    cursor: pointer;
 }
 
 

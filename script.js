@@ -71,7 +71,7 @@ const wordList = [
 
 const inputs = document.querySelector('.inputs')
 const resetBtn = document.querySelector('.reset-btn')
-const wrongLetter = document.querySelector('.wrong-letters')
+const wrongLetter = document.querySelector('.wrong-letters span')
 const hint = document.querySelector(".hint span")
 const guessLeft = document.querySelector(".guess-left span")
 const typingInput = document.querySelector('.typing-input')
@@ -82,18 +82,20 @@ let corrects = [];
 let incorrects = [];
 
 function randomWord() {
+    //this is what gets random object from my wordlist
     let randomObj = wordList[Math.floor(Math.random() * wordList.length)]
-    word = randomObj.word;
+    word = randomObj.word; //this is what will choose a word from random object
+    
     maxGuesses = 8; corrects = []; incorrects = [];
     console.log(word);
 
-    hint.innerText = randomObj.hint;
-    guessLeft.innerText = maxGuesses;
-    wrongLetter.innerText = incorrects;
+    hint.innerHTML = randomObj.hint;
+    guessLeft.innerHTML = maxGuesses;
+    wrongLetter.innerHTML = incorrects;
 
 
     let html = "";
-    for (let i=0; i<word.length; i++) {
+    for (let i=0; i < word.length; i++) {
         html += `<input type="text" disabled>`;
     }
     inputs.innerHTML = html;
