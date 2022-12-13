@@ -1,8 +1,5 @@
-*{
-    margin: 0;
-    padding: 0;
+*, *::after, *::before {
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 body{
     display: flex;
@@ -13,6 +10,22 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.alertbox {
+    position: fixed;
+    opacity:inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(40, 39, 39);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    font-family: cursive;
+}    
+
 .wrapper {
     width: 430px;
     background: white;
@@ -34,6 +47,7 @@ body{
     height: 2em;
     padding: 10px;
     margin: 10px;
+    border: 1px solid rgb(202, 194, 194);
 }
 .content .inputs{
     display: flex;
@@ -66,7 +80,11 @@ body{
     background: black;
     cursor: pointer;
 }
-
-
+.reset-btn:hover {
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
 
 

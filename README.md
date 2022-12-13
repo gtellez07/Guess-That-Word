@@ -25,4 +25,6 @@
 * create different levels of difficulty
 * use a more interesting background to makethe game really pop-out
 * make it to where the game is able to accept both lowercase and uppercase letters
-
+#
+#
+Check out deployed live site here: https://gtellez07.github.io/Guess-That-Word/

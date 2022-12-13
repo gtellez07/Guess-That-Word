@@ -75,26 +75,41 @@ const wrongLetter = document.querySelector('.wrong-letters span')
 const hint = document.querySelector(".hint span")
 const guessLeft = document.querySelector(".guess-left span")
 const typingInput = document.querySelector('.typing-input')
+const alertBox = document.querySelector('.alertbox')
 
-let word; 
+
+// const winningMessageElement = document.getElementById("winningMessage")
+// const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+
+let word; //had to turn into global var
 let maxGuesses; 
 let corrects = []; 
-let incorrects = [];
+let incorrects = []; //created for non-matching letters
+
+function showAlertBox(text){
+    alertBox.innerText = text
+    alertBox.style.display = "flex"
+}
 
 function randomWord() {
+
+    setTimeout(function() {
+        alertBox.style.display = "none"
+    }, 3000);
+
     //this is what gets random object from my wordlist
     let randomObj = wordList[Math.floor(Math.random() * wordList.length)]
     word = randomObj.word; //this is what will choose a word from random object
     
-    maxGuesses = 8; corrects = []; incorrects = [];
+    maxGuesses = 8; corrects = []; incorrects = [];//max amt of guesses for player
     console.log(word);
 
-    hint.innerHTML = randomObj.hint;
+    hint.innerHTML = randomObj.hint;//pulls from random wordlist
     guessLeft.innerHTML = maxGuesses;
     wrongLetter.innerHTML = incorrects;
 
 
-    let html = "";
+    let html = ""; //1. to bring over the input of the letters
     for (let i=0; i < word.length; i++) {
         html += `<input type="text" disabled>`;
     }
@@ -102,49 +117,52 @@ function randomWord() {
 }
 randomWord()
 
-function initGame(e) {
+function initGame(e) { //created this function so player can key in a letter
     let key = e.target.value;
-    if(key.match(/^[A-Za-z]+$/) && !incorrects.includes(` ${key}`)
-    && !corrects.includes(key)){
+    if(key.match(/^[A-Za-z]+$/) && !incorrects.includes(` ${key}`)//if statement to make sure player types in a letter, not a number; after ampersands-so letter cant be added twice 
+    && !corrects.includes(key)){//populates the word into box
         console.log(key)
-        if(word.includes(key)){
-            // console.log("letter found")
+        if(word.includes(key)){ //validates letter typed in, matches word being guessed
             for(let i=0; i < word.length; i++) {
-                if(word[i] === key) {
+                if(word[i] === key) { //this will populate the (matching) letter into the input
                     corrects.push(key)
                     inputs.querySelectorAll("input")[i].value = key;
                 }
             }
         } else {
             // console.log("letter not found")
-            maxGuesses--;
-            incorrects.push(` ${key}`);
+            maxGuesses--;// decreases the guess by one
+            incorrects.push(` ${key}`);//this will add the wrong letter to 'Wrong letters' field, and used template literal to add a space
         }
         guessLeft.innerText = maxGuesses;
-        wrongLetter.innerText = incorrects;
+        wrongLetter.innerText = incorrects;//wrong-letter field from html
     }
     typingInput.value = "";
 
     setTimeout(() => {
         if(corrects.length === word.length){
-            alert("That's Correct!! CONGRATS!!!");
+            showAlertBox("You Win!!")
+            // winningMessageElement.classList.add("You win!")
+            // winningMessageElement.classList.add('show')
             randomWord();
         }
     
-        else if(maxGuesses < 1){
-            alert("GAME OVER!");
+        else if(maxGuesses < 1){//indicates to player out of chances
+            showAlertBox("Sorry, Try Again!")
             for(let i = 0; i<word.length; i++){
                 inputs.querySelectorAll("input")[i].value = word[i];
-            }    
+            }
+            randomWord();
+
         }
     });
 }
 
 
 
-resetBtn.addEventListener("click", randomWord);
-typingInput.addEventListener("keydown", initGame);
-inputs.addEventListener("click", () => typingInput.focus());
+resetBtn.addEventListener("click", randomWord);//to activate Reset Game button
+typingInput.addEventListener("keydown", initGame);//to input inside 'insert letter'
+inputs.addEventListener("click", () => typingInput.focus());//focus sets element as the active element in current doc;element can be:button, txt field, or window
 document.addEventListener("keydown", () => typingInput.focus());
 
 
